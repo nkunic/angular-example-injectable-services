@@ -1,0 +1,78 @@
+<div
+  *ngIf="course"
+  class="card"
+  [ngClass]="[
+    course.category == 'BEGINNER' ? 'card--beginner' : '',
+    course.category == 'INTERMEDIATE' ? 'card--intermediate' : '',
+    course.category == 'ADVANCED' ? 'card--advanced' : '',
+    course.category != 'BEGINNER' &&
+    course.category != 'INTERMEDIATE' &&
+    course.category != 'ADVANCED'
+      ? 'card--all-levels'
+      : ''
+  ]"
+>
+  <div class="card__header">
+    <h3 class="card__title">
+      {{ cardIndex + ') ' + course.title | titlecase }}
+    </h3>
+    <div class="card_price">
+      {{ course.price | currency: 'EUR' }}
+    </div>
+  </div>
+
+  <div class="card__content">
+    <div class="card__image">
+      <div
+        *ngIf="isImageVisible(); else noImage"
+        class="card__background-image"
+        [ngStyle]="imageClasses()"
+      ></div>
+      <ng-template #noImage>
+        <p>No image is available</p>
+      </ng-template>
+    </div>
+    <p class="card__description">
+      {{ course.description }}
+    </p>
+    <div class="card__details">
+      <div
+        class="card__category"
+        [ngSwitch]="course.category"
+        [ngClass]="[
+          course.category == 'BEGINNER' ? 'card__category--beginner' : '',
+          course.category == 'INTERMEDIATE'
+            ? 'card__category--intermediate'
+            : '',
+          course.category == 'ADVANCED' ? 'card__category--advanced' : '',
+          course.category != 'BEGINNER' &&
+          course.category != 'INTERMEDIATE' &&
+          course.category != 'ADVANCED'
+            ? 'card__category--all-levels'
+            : ''
+        ]"
+      >
+        <span *ngSwitchCase="'BEGINNER'">Beginner</span>
+        <span *ngSwitchCase="'INTERMEDIATE'">Intermediate</span>
+        <span *ngSwitchCase="'ADVANCED'">Advanced</span>
+        <span *ngSwitchDefault>All levels</span>
+      </div>
+      <div class="card__date">
+        <strong> Start date: </strong>
+        {{ startDate | date: 'MM/dd/yy' }}
+      </div>
+    </div>
+  </div>
+
+  <div class="card__footer">
+    <div class="card_rate">
+      <strong>Watched:</strong> {{ course.rate | percent }}
+    </div>
+    <button
+      class="card__button card__button--standard"
+      (click)="onCustomButtonClicked()"
+    >
+      Custom browser event
+    </button>
+  </div>
+</div>

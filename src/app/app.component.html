@@ -1,0 +1,10 @@
+<h1>ANGULAR Built-In Pipes</h1>
+
+<div class="cards">
+  <app-card
+    *ngFor="let course of courses; index as i"
+    [cardIndex]="i + 1"
+    [course]="course"
+    (customEventClicked)="onCustomEventClicked($event)"
+  ></app-card>
+</div>

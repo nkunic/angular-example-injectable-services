@@ -1,0 +1,101 @@
+.card {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid black;
+
+  &.card--beginner {
+    background-color: lightgreen;
+  }
+  &.card--intermediate {
+    background-color: lightsalmon;
+  }
+  &.card--advanced {
+    background-color: lightblue;
+  }
+  &.card--all-levels {
+    background-color: lightgoldenrodyellow;
+  }
+
+  .card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    .card__title {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .card_price {
+      font-size: 1rem;
+      color: black;
+      font-weight: bold;
+    }
+  }
+
+  .card__content {
+    .card__image {
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+    .card__background-image {
+      height: 15rem;
+      width: 100%;
+      background-repeat: no-repeat;
+    }
+    .card__details {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .card__category {
+      display: inline-flex;
+      padding: 0.3125rem 0.625rem;
+      border-radius: 1rem;
+      border: 1px solid black;
+      &.card__category--beginner {
+        color: white;
+        background-color: green;
+      }
+      &.card__category--intermediate {
+        color: white;
+        background-color: salmon;
+      }
+      &.card__category--advanced {
+        color: white;
+        background-color: blue;
+      }
+      &.card__category--all-levels {
+        color: black;
+        background-color: yellow;
+      }
+    }
+  }
+
+  .card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .card_rate {
+      font-size: 1rem;
+      color: black;
+    }
+
+    .card__button {
+      cursor: pointer;
+      color: white;
+      border: none;
+      padding: 0.3125rem 0.625rem;
+      &.card__button--standard {
+        background-color: GREEN;
+      }
+    }
+
+    button + button {
+      margin-left: 1rem;
+    }
+  }
+}
